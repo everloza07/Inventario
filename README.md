@@ -1,2 +1,3 @@
 hola
 inventario
+almacen
