@@ -11,13 +11,17 @@
   --ok: #49d490;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-    Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
+    Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
   background: linear-gradient(180deg, #0b0c10, #0b0c10 200px, #0d1017);
   color: var(--text);
 }
@@ -28,18 +32,26 @@ body {
   padding: 0 16px;
 }
 
-header { margin-bottom: 16px; }
+header {
+  margin-bottom: 16px;
+}
 
-h1 { font-size: 24px; margin: 0 0 8px 0; }
+h1 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
 
-.subtitle { color: var(--muted); font-size: 13px; }
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+}
 
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Formulario */
@@ -83,17 +95,32 @@ button {
   color: white;
 }
 
-button.primary { background: var(--primary); }
-button.primary:hover { background: var(--primary-700); }
+button.primary {
+  background: var(--primary);
+}
+button.primary:hover {
+  background: var(--primary-700);
+}
 
-button.secondary { background: #2a2f3a; color: #e7eef6; }
-button.secondary:hover { background: #394152; }
+button.secondary {
+  background: #2a2f3a;
+  color: #e7eef6;
+}
+button.secondary:hover {
+  background: #394152;
+}
 
-button.danger { background: var(--danger); }
-button.danger:hover { background: var(--danger-700); }
+button.danger {
+  background: var(--danger);
+}
+button.danger:hover {
+  background: var(--danger-700);
+}
 
 /* Tabla */
-.table-wrap { overflow-x: auto; }
+.table-wrap {
+  overflow-x: auto;
+}
 table {
   width: 100%;
   border-collapse: collapse;
@@ -122,13 +149,225 @@ tfoot th.total {
   font-weight: 700;
   font-size: 15px;
 }
-td.num, th.num { text-align: right; }
-td.actions { width: 160px; }
-.actions { display: flex; gap: 8px; }
-
-.empty { text-align: center; color: var(--muted); padding: 18px; }
-
-@media (max-width: 700px) {
-  form#form-producto { grid-template-columns: 1fr 1fr; }
+td.num,
+th.num {
+  text-align: right;
+}
+td.actions {
+  width: 160px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
 }
 
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 18px;
+}
+
+@media (max-width: 700px) {
+  form#form-producto {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Responsivo adicional */
+@media (max-width: 480px) {
+  /* Formulario en una sola columna y botón a ancho completo */
+  form#form-producto {
+    grid-template-columns: 1fr;
+  }
+  form#form-producto button {
+    width: 100%;
+  }
+}
+
+/* Tabla como tarjetas en móvil */
+@media (max-width: 600px) {
+  thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+  }
+
+  tbody tr {
+    display: block;
+    margin: 12px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0d1017;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Etiquetas por celda */
+  tbody td::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-weight: 600;
+  }
+  tbody td:nth-child(1)::before {
+    content: "Producto";
+  }
+  tbody td:nth-child(2)::before {
+    content: "Precio";
+  }
+  tbody td:nth-child(3)::before {
+    content: "Stock";
+  }
+  tbody td:nth-child(4)::before {
+    content: "Total";
+  }
+  tbody td:nth-child(5)::before {
+    content: "Acciones";
+  }
+
+  /* Alinear valores numéricos a la izquierda en móvil */
+  td.num,
+  th.num {
+    text-align: left;
+  }
+
+  /* Acciones apiladas */
+  td.actions {
+    width: auto;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  td.actions::before {
+    margin-bottom: 6px;
+  }
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* Modal */
+body.modal-open {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-dialog {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: modalIn 0.15s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.icon-btn {
+  background: transparent;
+  color: var(--muted);
+  border-radius: 8px;
+  font-size: 22px;
+  line-height: 1;
+  width: 36px;
+  height: 36px;
+}
+.icon-btn:hover {
+  background: #2a2f3a;
+  color: #fff;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+/* Form de edición dentro del modal */
+#form-edit {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr;
+  gap: 12px;
+}
+
+#form-edit .modal-actions {
+  grid-column: 1 / -1;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+/* Responsive modal */
+@media (max-width: 600px) {
+  .modal-overlay {
+    align-items: flex-end;
+  }
+  .modal-dialog {
+    max-width: none;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+  }
+  #form-edit {
+    grid-template-columns: 1fr;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
