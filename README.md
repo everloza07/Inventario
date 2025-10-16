@@ -1,3 +1,0 @@
-hola
-inventario
-almacen

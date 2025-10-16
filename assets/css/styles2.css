@@ -1,3 +1,4 @@
+
 :root {
   --bg: #0b0c10;
   --panel: #11131a;
@@ -41,11 +42,6 @@ h1 {
   margin: 0 0 8px 0;
 }
 
-.subtitle {
-  color: var(--muted);
-  font-size: 13px;
-}
-
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -54,7 +50,7 @@ h1 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* Formulario */
+/* Inventario */
 form#form-producto {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 0.8fr auto;
@@ -117,6 +113,7 @@ button.danger:hover {
   background: var(--danger-700);
 }
 
+
 /* Tabla */
 .table-wrap {
   overflow-x: auto;
@@ -175,7 +172,7 @@ td.actions {
 
 /* Responsivo adicional */
 @media (max-width: 480px) {
-  /* Formulario en una sola columna y botón a ancho completo */
+
   form#form-producto {
     grid-template-columns: 1fr;
   }
@@ -184,7 +181,7 @@ td.actions {
   }
 }
 
-/* Tabla como tarjetas en móvil */
+
 @media (max-width: 600px) {
   thead {
     position: absolute;
@@ -218,7 +215,7 @@ td.actions {
     border-bottom: 0;
   }
 
-  /* Etiquetas por celda */
+
   tbody td::before {
     content: attr(data-label);
     color: var(--muted);
@@ -240,7 +237,7 @@ td.actions {
     content: "Acciones";
   }
 
-  /* Alinear valores numéricos a la izquierda en móvil */
+
   td.num,
   th.num {
     text-align: left;
@@ -371,3 +368,70 @@ body.modal-open {
     opacity: 1;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Registro de usuario */
+
+.form-container {
+  max-width: 450px;
+  margin: 32px auto;
+  padding: 0 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+h2 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: #2196F3;
+  color: white;
+}
+
+button[type="reset"] {
+  background-color: #f44336;
+  color: white;
+}
+
+
+
+
+      

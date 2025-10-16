@@ -1,110 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Inventario Básico</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Inventario Básico</h1>
-        <div class="subtitle">HTML + CSS + JavaScript (sin backend)</div>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inicio</title>
+  <link rel="stylesheet" href="assets/css/styles1.css" />
+</head>
+<body>
+  <h1>Inicio</h1>
+  <header>
+    <img src="assets/img/logo.jpg" alt="Logo" width="150" />
+    <iframe src="pages/Menu.html" frameborder="0" width="100%" height="80"></iframe>
+  </header>
 
-      <section class="panel">
-        <form id="form-producto" autocomplete="off">
-          <div class="field">
-            <label for="nombre">Producto</label>
-            <input id="nombre" name="nombre" type="text" placeholder="Ej. Teclado" required />
-          </div>
-          <div class="field">
-            <label for="precio">Precio</label>
-            <input id="precio" name="precio" type="number" min="0" step="0.01" placeholder="0.00" required />
-          </div>
-          <div class="field">
-            <label for="stock">Stock</label>
-            <input id="stock" name="stock" type="number" min="0" step="1" placeholder="0" required />
-          </div>
-          <div>
-            <button type="submit" class="primary">Agregar</button>
-          </div>
-        </form>
-
-        <div class="table-wrap">
-          <table aria-label="Tabla de inventario">
-            <thead>
-              <tr>
-                <th>Producto</th>
-                <th class="num">Precio</th>
-                <th class="num">Stock</th>
-                <th class="num">Total</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">
-              <tr class="empty"><td colspan="5">Sin productos. Agrega el primero arriba.</td></tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th colspan="3">Valor total del inventario</th>
-                <th id="valorTotal" class="num total">S/ 0.00</th>
-                <th></th>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-  </section>
+  
+  <div class="contenedor">
+    <div class="item">
+      NOVEDADES
+    <img src="assets/img/novedades.jpg" alt="NOVEDADES" class="imagen-item" />
     </div>
-    
-    <!-- Modal: Editar producto -->
-    <div id="modal-edit" class="modal-overlay" aria-hidden="true">
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="edit-title">
-        <div class="modal-header">
-          <h2 id="edit-title">Editar producto</h2>
-          <button type="button" class="icon-btn" data-close="edit" aria-label="Cerrar">x</button>
-        </div>
-        <form id="form-edit" class="modal-body" autocomplete="off">
-          <div class="field">
-            <label for="edit-nombre">Producto</label>
-            <input id="edit-nombre" type="text" required />
-          </div>
-          <div class="field">
-            <label for="edit-precio">Precio</label>
-            <input id="edit-precio" type="number" min="0" step="0.01" required />
-          </div>
-          <div class="field">
-            <label for="edit-stock">Stock</label>
-            <input id="edit-stock" type="number" min="0" step="1" required />
-          </div>
-          <div class="modal-actions">
-            <button type="button" class="secondary" data-close="edit">Cancelar</button>
-            <button type="submit" class="primary">Guardar</button>
-          </div>
-        </form>
-      </div>
+    <div class="item">
+      DESCUENTOS
+      <img src="assets/img/descuento.jpg" alt="DESCUENTOS" class="imagen-item" />
     </div>
-
-    <!-- Modal: Eliminar producto -->
-    <div id="modal-delete" class="modal-overlay" aria-hidden="true">
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-title">
-        <div class="modal-header">
-          <h2 id="delete-title">Eliminar producto</h2>
-          <button type="button" class="icon-btn" data-close="delete" aria-label="Cerrar">x</button>
-        </div>
-        <div class="modal-body">
-          <p id="delete-message">¿Eliminar este producto del inventario?</p>
-          <div class="modal-actions">
-            <button type="button" class="secondary" data-close="delete">Cancelar</button>
-            <button type="button" class="danger" id="btn-confirm-delete">Eliminar</button>
-          </div>
-        </div>
-      </div>
+    <div class="item">
+      PROMOCIONES
+      <img src="assets/img/promocion.jpg" alt="PROMOCIONES" class="imagen-item" />
     </div>
-
-    <script src="app.js"></script>
-  </body>
-  </html>
-
+    <div class="item">
+      RAPIDEZ
+      <img src="assets/img/rapidez.jpg" alt="RAPIDEZ" class="imagen-item" />
+    </div>
+  </div>
+  <div class="actions-index">
+    <a class="btn" href="pages/Registro.html" role="button">Registrarse</a>
+    <a class="btn" href="pages/login.html" role="button">Iniciar sesión</a>
+    <a class="btn" href="pages/Inventario.html" role="button">Ir al Inventario</a>
+  </div>
+</body>
+</html>
 
