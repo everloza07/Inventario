@@ -4,39 +4,88 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Registro de Usuario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="../assets/css/styles2.css" />
 </head>
-<body class="registro">
-  <h1>Registro</h1>
-  <header>
-    <img src="../assets/img/logo.jpg" alt="Logo" width="150" />
-    <iframe src="Menu.html" frameborder="0" width="100%" height="80"></iframe>
-  </header>
-
-  
-  <div class="form-container">
-    <h2>Crear Cuenta de Usuario</h2>
-    <form>
-      <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" required />
-
-      <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" name="usuario" required />
-
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" id="contrasena" name="contrasena" required />
-
-      <label for="confirmar">Confirmar contraseña:</label>
-      <input type="password" id="confirmar" name="confirmar" required />
-
-      <div class="botones">
-        <button type="submit">Registrar</button>
-        <button type="reset">Cancelar</button>
+<body class="app-body registro-page">
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <img src="../assets/img/logo.jpg" alt="Logo Inventario 360" class="brand-logo" />
+        <div class="brand-copy">
+          <p class="brand-eyebrow">Inventario 360</p>
+          <p class="brand-tagline">Registro de usuarios</p>
+        </div>
       </div>
-    </form>
+      <nav class="main-nav">
+        <a href="../index.html">Inicio</a>
+        <a href="Inventario.html">Inventario</a>
+        <a href="Registro.html" class="active">Registro</a>
+        <a href="login.html">Iniciar sesión</a>
+      </nav>
+      <a class="btn btn-ghost" href="login.html">Tengo cuenta</a>
+    </header>
+
+    <main class="page-content auth-layout">
+      <section class="surface form-card">
+        <p class="eyebrow">Formulario</p>
+        <h1>Crea un usuario para tu equipo</h1>
+        <p class="muted">Completa los datos para habilitar accesos seguros al panel de inventario.</p>
+
+        <form class="form-grid" autocomplete="off">
+          <div class="field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carla Quispe" />
+          </div>
+          <div class="field">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" required placeholder="Usuario interno" />
+          </div>
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required placeholder="correo@empresa.com" />
+          </div>
+          <div class="field">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required placeholder="Mínimo 8 caracteres" />
+          </div>
+          <div class="field">
+            <label for="confirmar">Confirmar contraseña</label>
+            <input type="password" id="confirmar" name="confirmar" required placeholder="Repite la contraseña" />
+          </div>
+          <div class="form-actions">
+            <button type="reset" class="btn btn-ghost">Limpiar</button>
+            <button type="submit" class="btn btn-primary">Registrar usuario</button>
+          </div>
+        </form>
+      </section>
+
+      <aside class="surface tips-card">
+        <p class="eyebrow">Checklist de acceso</p>
+        <h2>Mejor experiencia para nuevos usuarios</h2>
+        <ul class="checklist">
+          <li>Define un correo corporativo válido.</li>
+          <li>Selecciona un rol según el nivel de permisos.</li>
+          <li>Confirma la recepción del correo de bienvenida.</li>
+          <li>Activa el doble factor en el primer ingreso.</li>
+        </ul>
+        <div class="mini-metrics">
+          <article>
+            <p class="muted">Usuarios activos</p>
+            <p class="stat">128</p>
+          </article>
+          <article>
+            <p class="muted">Cuentas nuevas este mes</p>
+            <p class="stat accent">12</p>
+          </article>
+        </div>
+      </aside>
+    </main>
   </div>
 </body>
 </html>

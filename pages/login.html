@@ -3,31 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login</title>
+  <title>Ingreso | Inventario 360</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="../assets/css/styles.css" />
 </head>
-<body>
-  <div class="login-container">
-    <h2>Acceso al Sistema de Inventario</h2>
-    <form>
-      <label for="usuario">Usuario:</label>
-      <input type="text" id="usuario" name="usuario" required />
+<body class="login-body">
+  <div class="login-wrapper">
+    <section class="login-hero">
+      <p class="eyebrow">Inventario 360</p>
+      <h1>Operaciones seguras con visibilidad completa</h1>
+      <p class="muted">
+        Accede a tu panel personalizado para revisar movimientos, generar alertas y coordinar acciones con el equipo.
+      </p>
+      <ul>
+        <li>Autenticación protegida y permisos por rol.</li>
+        <li>Dashboard en tiempo real y reportes instantáneos.</li>
+        <li>Integraciones listas para tu ERP.</li>
+      </ul>
+    </section>
 
-      <label for="contrasena">Contraseña:</label>
-      <input type="password" id="contrasena" name="contrasena" required />
-
-      <div class="botones">
-        <button type="submit">Ingresar</button>
-        <button type="reset">Cancelar</button>
+    <section class="login-card">
+      <div class="brand-mini">
+        <img src="../assets/img/logo.jpg" alt="Inventario 360" />
+        <span>Panel seguro</span>
       </div>
-    </form>
+      <h2>Inicia sesión</h2>
+      <p>Ingresa tus credenciales para continuar.</p>
+      <form autocomplete="off">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" required placeholder="Tu usuario corporativo" />
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" name="contrasena" required placeholder="********" />
+
+        <div class="form-footer">
+          <a href="Registro.html">&iquest;Necesitas una cuenta?</a>
+        </div>
+
+        <div class="btn-group">
+          <button type="reset" class="btn btn-ghost">Limpiar</button>
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+      </form>
+    </section>
   </div>
+
   <script>
     (function () {
       const form = document.querySelector('form');
       form && form.addEventListener('submit', function (e) {
         e.preventDefault();
-        // Simula login y redirige al inventario
         window.location.href = 'Inventario.html';
       });
     })();

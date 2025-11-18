@@ -3,40 +3,168 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Inicio</title>
+  <title>Inventario 360</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <link rel="stylesheet" href="assets/css/styles1.css" />
 </head>
 <body>
-  <h1>Inicio</h1>
-  <header>
-    <img src="assets/img/logo.jpg" alt="Logo" width="150" />
-    <iframe src="pages/Menu.html" frameborder="0" width="100%" height="80"></iframe>
-  </header>
+  <div class="page">
+    <header class="site-header">
+      <div class="brand">
+        <img src="assets/img/logo.jpg" alt="Logo Inventario 360" class="brand-logo" />
+        <div class="brand-copy">
+          <p class="brand-eyebrow">Inventario 360</p>
+          <p class="brand-tagline">Gestión ágil para equipos modernos</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#cta">Contacto</a>
+      </nav>
+      <a class="btn btn-ghost" href="pages/login.html">Iniciar sesión</a>
+    </header>
 
-  
-  <div class="contenedor">
-    <div class="item">
-      NOVEDADES
-    <img src="assets/img/novedades.jpg" alt="NOVEDADES" class="imagen-item" />
-    </div>
-    <div class="item">
-      DESCUENTOS
-      <img src="assets/img/descuento.jpg" alt="DESCUENTOS" class="imagen-item" />
-    </div>
-    <div class="item">
-      PROMOCIONES
-      <img src="assets/img/promocion.jpg" alt="PROMOCIONES" class="imagen-item" />
-    </div>
-    <div class="item">
-      RAPIDEZ
-      <img src="assets/img/rapidez.jpg" alt="RAPIDEZ" class="imagen-item" />
-    </div>
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-content">
+          <p class="eyebrow">Visibilidad en tiempo real</p>
+          <h1>Controla tu inventario con precisión y estilo profesional</h1>
+          <p class="lead">
+            Centraliza movimientos, automatiza alertas y comparte información clara con tu equipo desde un solo panel intuitivo.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="pages/Inventario.html">Ir al inventario</a>
+            <a class="btn btn-secondary" href="pages/Registro.html">Crear cuenta</a>
+          </div>
+          <ul class="highlights">
+            <li>Reportes en segundos</li>
+            <li>Alertas inteligentes</li>
+            <li>Sin necesidad de capacitación</li>
+          </ul>
+        </div>
+        <div class="hero-panel">
+          <p class="panel-label">Resumen instantáneo</p>
+          <p class="panel-value">+2.300 ítems</p>
+          <p class="panel-sub">Actualizado hace 3 min</p>
+          <div class="stat-list">
+            <article>
+              <p class="stat-label">Nuevas entradas</p>
+              <p class="stat-value">48</p>
+              <p class="stat-desc">Semana actual</p>
+            </article>
+            <article>
+              <p class="stat-label">Alertas activas</p>
+              <p class="stat-value">3</p>
+              <p class="stat-desc">Restock inmediato</p>
+            </article>
+            <article>
+              <p class="stat-label">Órdenes completadas</p>
+              <p class="stat-value">92%</p>
+              <p class="stat-desc">Últimos 30 días</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-grid" id="soluciones">
+        <header class="section-heading">
+          <p class="eyebrow">Soluciones clave</p>
+          <h2>Todo lo que tu operación necesita</h2>
+          <p>Beneficios diseñados para dar claridad y velocidad a tu cadena de suministro.</p>
+        </header>
+        <div class="grid">
+          <article class="feature-card">
+            <figure>
+              <img src="assets/img/novedades.jpg" alt="Novedades" loading="lazy" />
+            </figure>
+            <div>
+              <h3>Novedades visibles</h3>
+              <p>Comparte actualizaciones relevantes con clientes internos y externos desde un único espacio.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <figure>
+              <img src="assets/img/descuento.jpg" alt="Descuentos" loading="lazy" />
+            </figure>
+            <div>
+              <h3>Descuentos inteligentes</h3>
+              <p>Activa promociones automáticas cuando existan excedentes o fechas de vencimiento cercanas.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <figure>
+              <img src="assets/img/promocion.jpg" alt="Promociones" loading="lazy" />
+            </figure>
+            <div>
+              <h3>Promociones coordinadas</h3>
+              <p>Sincroniza campañas comerciales con el estado del inventario y evita quiebres de stock.</p>
+            </div>
+          </article>
+          <article class="feature-card">
+            <figure>
+              <img src="assets/img/rapidez.jpg" alt="Rapidez" loading="lazy" />
+            </figure>
+            <div>
+              <h3>Rapidez operativa</h3>
+              <p>Automatiza tareas repetitivas y gana tiempo para enfocarte en decisiones de mayor impacto.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="workflow" id="flujo">
+        <header class="section-heading">
+          <p class="eyebrow">Flujo de trabajo</p>
+          <h2>Un proceso guiado de principio a fin</h2>
+        </header>
+        <div class="steps">
+          <article class="step-card">
+            <span class="step-number">1</span>
+            <h3>Registrar</h3>
+            <p>Sube tus catálogos o ingresa productos manualmente con validaciones automáticas.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">2</span>
+            <h3>Controlar</h3>
+            <p>Monitorea movimientos, aplica filtros avanzados y genera reportes en PDF o Excel.</p>
+          </article>
+          <article class="step-card">
+            <span class="step-number">3</span>
+            <h3>Analizar</h3>
+            <p>Identifica tendencias, recibe alertas predictivas y comparte insights con tu equipo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-panel" id="cta">
+        <div>
+          <h2>¿Listo para tomar control del inventario?</h2>
+          <p>Invita a tu equipo, define permisos por rol y mantén cada unidad monitoreada con indicadores confiables.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="pages/Registro.html">Empezar ahora</a>
+          <a class="btn btn-ghost" href="pages/Menu.html">Ver demo guiada</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Inventario 360 · Operaciones más simples y transparentes.</p>
+    </footer>
   </div>
-  <div class="actions-index">
-    <a class="btn" href="pages/Registro.html" role="button">Registrarse</a>
-    <a class="btn" href="pages/login.html" role="button">Iniciar sesión</a>
-    <a class="btn" href="pages/Inventario.html" role="button">Ir al Inventario</a>
-  </div>
+
+  <script>
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  </script>
 </body>
 </html>
-

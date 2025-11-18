@@ -8,6 +8,9 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 const form = $("#form-producto");
 const tbody = $("#tbody");
 const totalEl = $("#valorTotal");
+const totalResumenEl = $("#valorTotalResumen");
+const totalProductosEl = $("#totalProductos");
+const totalUnidadesEl = $("#totalUnidades");
 
 function formatoMoneda(n) {
   if (!isFinite(n)) n = 0;
@@ -66,6 +69,13 @@ function validarProducto(nombre, precio, stock) {
 function render() {
   if (!tbody || !totalEl) return;
   tbody.innerHTML = "";
+  const updateSummaries = (valor, productosCount, unidades) => {
+    const valorTexto = formatoMoneda(valor);
+    totalEl.textContent = valorTexto;
+    if (totalResumenEl) totalResumenEl.textContent = valorTexto;
+    if (totalProductosEl) totalProductosEl.textContent = productosCount.toString();
+    if (totalUnidadesEl) totalUnidadesEl.textContent = unidades.toString();
+  };
   if (productos.length === 0) {
     const tr = document.createElement("tr");
     tr.className = "empty";
@@ -74,11 +84,12 @@ function render() {
     td.textContent = "Sin productos. Agrega el primero arriba.";
     tr.appendChild(td);
     tbody.appendChild(tr);
-    totalEl.textContent = formatoMoneda(0);
+    updateSummaries(0, 0, 0);
     return;
   }
 
   let total = 0;
+  let unidades = 0;
   productos.forEach((p, idx) => {
     const tr = document.createElement("tr");
 
@@ -92,6 +103,7 @@ function render() {
     const tdStock = document.createElement("td");
     tdStock.className = "num";
     tdStock.textContent = p.stock;
+    unidades += p.stock;
 
     const subtotal = p.precio * p.stock;
     total += subtotal;
@@ -119,7 +131,7 @@ function render() {
     tbody.appendChild(tr);
   });
 
-  totalEl.textContent = formatoMoneda(total);
+  updateSummaries(total, productos.length, unidades);
 }
 
 function onSubmitAgregar(e) {

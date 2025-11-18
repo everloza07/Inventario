@@ -1,8 +1,65 @@
-<nav>
-    <ul>
-        <li><a href="../index.html" target="_parent">Inicio</a></li>
-        <li><a href="Inventario.html" target="_parent">Inventario</a></li>
-        <li><a href="Registro.html" target="_parent">Registro</a></li>
-        <li><a href="login.html" target="_parent">Cerrar Sesión</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Menú principal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../assets/css/styles2.css" />
+</head>
+<body class="app-body menu-page">
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <img src="../assets/img/logo.jpg" alt="Logo Inventario 360" class="brand-logo" />
+        <div class="brand-copy">
+          <p class="brand-eyebrow">Inventario 360</p>
+          <p class="brand-tagline">Panel de navegación</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="../index.html">Inicio</a>
+        <a href="Inventario.html">Inventario</a>
+        <a href="Registro.html">Registro</a>
+        <a href="login.html">Iniciar sesión</a>
+      </nav>
+      <a class="btn btn-ghost" href="login.html">Salir</a>
+    </header>
+
+    <main class="page-content">
+      <section class="menu-panel surface">
+        <header>
+          <p class="eyebrow">Rutas disponibles</p>
+          <h1>Accesos rápidos al sistema</h1>
+          <p class="muted">
+            Utiliza estos accesos para moverte entre las vistas clave sin perder el contexto de tu operación.
+          </p>
+        </header>
+        <div class="menu-links">
+          <a class="menu-card" href="../index.html">
+            <span>Inicio</span>
+            <p>Resumen ejecutivo y beneficios principales.</p>
+          </a>
+          <a class="menu-card" href="Inventario.html">
+            <span>Inventario</span>
+            <p>Control, edición y reportes en tiempo real.</p>
+          </a>
+          <a class="menu-card" href="Registro.html">
+            <span>Registro</span>
+            <p>Dar de alta nuevos usuarios internos.</p>
+          </a>
+          <a class="menu-card" href="login.html">
+            <span>Iniciar sesión</span>
+            <p>Volver a la autenticación para cambiar de usuario.</p>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
