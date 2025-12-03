@@ -15,19 +15,14 @@
 <body class="app-body registro-page">
   <div class="app-shell">
     <header class="site-header">
-      <div class="brand">
+      <a class="brand" href="../index.html">
         <img src="../assets/img/logo.jpg" alt="Logo Inventario 360" class="brand-logo" />
         <div class="brand-copy">
           <p class="brand-eyebrow">Inventario 360</p>
           <p class="brand-tagline">Registro de usuarios</p>
         </div>
-      </div>
-      <nav class="main-nav">
-        <a href="../index.html">Inicio</a>
-        <a href="Inventario.html">Inventario</a>
-        <a href="Registro.html" class="active">Registro</a>
-        <a href="login.html">Iniciar sesión</a>
-      </nav>
+      </a>
+      <nav class="main-nav"></nav>
       <a class="btn btn-ghost" href="login.html">Tengo cuenta</a>
     </header>
 
@@ -37,7 +32,8 @@
         <h1>Crea un usuario para tu equipo</h1>
         <p class="muted">Completa los datos para habilitar accesos seguros al panel de inventario.</p>
 
-        <form class="form-grid" autocomplete="off">
+        <div class="form-status hidden" id="registro-status" role="alert" aria-live="polite"></div>
+        <form id="registro-form" class="form-grid" autocomplete="off">
           <div class="field">
             <label for="nombre">Nombre completo</label>
             <input type="text" id="nombre" name="nombre" required placeholder="Ej. Carla Quispe" />
@@ -87,5 +83,55 @@
       </aside>
     </main>
   </div>
+  <script src="../assets/js/auth.js"></script>
+  <script>
+    (function () {
+      window.Auth?.ensureGuest?.({ redirectTo: 'Menu.html' });
+      const form = document.querySelector('#registro-form');
+      const statusBox = document.querySelector('#registro-status');
+
+      const setStatus = (message = '', type = '') => {
+        if (!statusBox) return;
+        statusBox.textContent = message;
+        statusBox.className = 'form-status' + (type ? ` status-${type}` : '');
+        statusBox.classList.toggle('hidden', !message);
+      };
+
+      form &&
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          setStatus();
+          const payload = {
+            nombre: form.nombre?.value,
+            usuario: form.usuario?.value,
+            email: form.email?.value,
+            contrasena: form.contrasena?.value,
+            confirmar: form.confirmar?.value,
+          };
+          const result = window.Auth?.registerUser?.(payload);
+          if (!result?.ok) {
+            setStatus(result?.message || 'No se pudo registrar.', 'error');
+            return;
+          }
+          const loginResult = window.Auth?.loginUser?.({
+            usuario: payload.usuario,
+            contrasena: payload.contrasena,
+          });
+          if (loginResult?.ok) {
+            setStatus('Usuario creado y sesión iniciada. Redirigiendo...', 'success');
+            setTimeout(() => window.Auth?.goToPanel?.('Menu.html'), 600);
+          } else {
+            setStatus('Usuario creado. Ahora puedes iniciar sesion.', 'success');
+            form.reset();
+            setTimeout(() => (window.location.href = 'login.html'), 700);
+          }
+        });
+
+      form &&
+        form.querySelectorAll('input').forEach((input) =>
+          input.addEventListener('input', () => setStatus())
+        );
+    })();
+  </script>
 </body>
 </html>

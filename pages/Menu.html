@@ -25,10 +25,11 @@
       <nav class="main-nav">
         <a href="../index.html">Inicio</a>
         <a href="Inventario.html">Inventario</a>
-        <a href="Registro.html">Registro</a>
-        <a href="login.html">Iniciar sesión</a>
       </nav>
-      <a class="btn btn-ghost" href="login.html">Salir</a>
+      <div class="header-actions">
+        <div class="user-chip" id="userChip" aria-label="Usuario autenticado"></div>
+        <a class="btn btn-ghost" href="login.html" data-logout>Cerrar sesión</a>
+      </div>
     </header>
 
     <main class="page-content">
@@ -49,17 +50,37 @@
             <span>Inventario</span>
             <p>Control, edición y reportes en tiempo real.</p>
           </a>
-          <a class="menu-card" href="Registro.html">
-            <span>Registro</span>
-            <p>Dar de alta nuevos usuarios internos.</p>
-          </a>
-          <a class="menu-card" href="login.html">
-            <span>Iniciar sesión</span>
-            <p>Volver a la autenticación para cambiar de usuario.</p>
+          <a class="menu-card" href="login.html" data-logout>
+            <span>Cerrar sesión</span>
+            <p>Finaliza tu sesión o cambia de usuario.</p>
           </a>
         </div>
       </section>
     </main>
   </div>
+  <script src="../assets/js/auth.js"></script>
+  <script>
+    (function () {
+      const session = window.Auth?.requireSession?.({
+        redirectTo: 'login.html',
+        message: 'Inicia sesión para continuar.',
+      });
+      const chip = document.querySelector('#userChip');
+      if (chip && session) {
+        chip.textContent = session.nombre || session.usuario;
+        chip.title = session.email || session.usuario;
+        chip.classList.add('show');
+      }
+      document
+        .querySelectorAll('[data-logout]')
+        .forEach((el) =>
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.Auth?.logout?.();
+            window.location.href = 'login.html';
+          })
+        );
+    })();
+  </script>
 </body>
 </html>

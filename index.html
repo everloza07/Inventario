@@ -23,12 +23,8 @@
         </div>
       </div>
       <nav class="main-nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#soluciones">Soluciones</a>
-        <a href="#flujo">Flujo</a>
-        <a href="#cta">Contacto</a>
       </nav>
-      <a class="btn btn-ghost" href="pages/login.html">Iniciar sesión</a>
+      <a class="btn btn-ghost" id="navPanelCta" href="pages/login.html">Iniciar sesión</a>
     </header>
 
     <main>
@@ -39,10 +35,7 @@
           <p class="lead">
             Centraliza movimientos, automatiza alertas y comparte información clara con tu equipo desde un solo panel intuitivo.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="pages/Inventario.html">Ir al inventario</a>
-            <a class="btn btn-secondary" href="pages/Registro.html">Crear cuenta</a>
-          </div>
+          <div class="hero-actions"></div>
           <ul class="highlights">
             <li>Reportes en segundos</li>
             <li>Alertas inteligentes</li>
@@ -148,10 +141,7 @@
           <h2>¿Listo para tomar control del inventario?</h2>
           <p>Invita a tu equipo, define permisos por rol y mantén cada unidad monitoreada con indicadores confiables.</p>
         </div>
-        <div class="cta-actions">
-          <a class="btn btn-primary" href="pages/Registro.html">Empezar ahora</a>
-          <a class="btn btn-ghost" href="pages/Menu.html">Ver demo guiada</a>
-        </div>
+        <div class="cta-actions"></div>
       </section>
     </main>
 
@@ -160,11 +150,31 @@
     </footer>
   </div>
 
+  <script src="assets/js/auth.js"></script>
   <script>
     const yearElement = document.getElementById('year');
     if (yearElement) {
       yearElement.textContent = new Date().getFullYear();
     }
+    (function () {
+      const user = window.Auth?.currentUser?.();
+      const panelPath = 'pages/Menu.html';
+      const loginPath = 'pages/login.html';
+      const navCta = document.getElementById('navPanelCta');
+      const heroCta = document.getElementById('heroPrimaryCta');
+      const setCta = (el, href, label) => {
+        if (!el) return;
+        el.href = href;
+        el.textContent = label;
+      };
+      if (user) {
+        setCta(navCta, panelPath, 'Ir al panel');
+        setCta(heroCta, panelPath, 'Ir al panel');
+      } else {
+        setCta(navCta, loginPath, 'Iniciar sesión');
+        setCta(heroCta, loginPath, 'Iniciar sesión');
+      }
+    })();
   </script>
 </body>
 </html>

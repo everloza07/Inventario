@@ -3,63 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ingreso | Inventario 360</title>
+  <title>Iniciar sesión | Inventario 360</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../assets/css/styles2.css" />
 </head>
-<body class="login-body">
-  <div class="login-wrapper">
-    <section class="login-hero">
-      <p class="eyebrow">Inventario 360</p>
-      <h1>Operaciones seguras con visibilidad completa</h1>
-      <p class="muted">
-        Accede a tu panel personalizado para revisar movimientos, generar alertas y coordinar acciones con el equipo.
-      </p>
-      <ul>
-        <li>Autenticación protegida y permisos por rol.</li>
-        <li>Dashboard en tiempo real y reportes instantáneos.</li>
-        <li>Integraciones listas para tu ERP.</li>
-      </ul>
-    </section>
-
-    <section class="login-card">
-      <div class="brand-mini">
-        <img src="../assets/img/logo.jpg" alt="Inventario 360" />
-        <span>Panel seguro</span>
-      </div>
-      <h2>Inicia sesión</h2>
-      <p>Ingresa tus credenciales para continuar.</p>
-      <form autocomplete="off">
-        <label for="usuario">Usuario</label>
-        <input type="text" id="usuario" name="usuario" required placeholder="Tu usuario corporativo" />
-
-        <label for="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" name="contrasena" required placeholder="********" />
-
-        <div class="form-footer">
-          <a href="Registro.html">&iquest;Necesitas una cuenta?</a>
+<body class="app-body login-page">
+  <div class="app-shell">
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <img src="../assets/img/logo.jpg" alt="Logo Inventario 360" class="brand-logo" />
+        <div class="brand-copy">
+          <p class="brand-eyebrow">Inventario 360</p>
+          <p class="brand-tagline">Acceso seguro</p>
         </div>
+      </a>
+      <nav class="main-nav"></nav>
+      <a class="btn btn-ghost" href="Registro.html">Crear cuenta</a>
+    </header>
 
-        <div class="btn-group">
-          <button type="reset" class="btn btn-ghost">Limpiar</button>
-          <button type="submit" class="btn btn-primary">Ingresar</button>
+    <main class="page-content auth-layout">
+      <section class="surface form-card">
+        <p class="eyebrow">Acceso</p>
+        <h1>Inicia sesión en tu panel</h1>
+        <p class="muted">Autenticación protegida para ver inventario, dashboards y reportes.</p>
+
+        <div class="form-status hidden" id="login-status" role="alert" aria-live="polite"></div>
+        <form id="login-form" class="form-grid" autocomplete="off">
+          <div class="field">
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" required placeholder="Tu usuario corporativo" />
+          </div>
+          <div class="field">
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required placeholder="********" />
+          </div>
+          <div class="form-actions">
+            <a class="btn btn-ghost" href="../index.html">Volver al inicio</a>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+          <p class="muted" style="margin: 0;">
+            ¿Necesitas una cuenta? <a href="Registro.html">Regístrate aquí</a>.
+          </p>
+        </form>
+      </section>
+
+      <aside class="surface tips-card">
+        <p class="eyebrow">Checklist de ingreso</p>
+        <h2>Confirma antes de continuar</h2>
+        <ul class="checklist">
+          <li>Usuario corporativo activo.</li>
+          <li>Contraseña correcta y actualizada.</li>
+          <li>Acceso solo para tu equipo autorizado.</li>
+          <li>Sesión segura en este dispositivo.</li>
+        </ul>
+        <div class="mini-metrics">
+          <article>
+            <p class="muted">Sesiones activas</p>
+            <p class="stat">32</p>
+          </article>
+          <article>
+            <p class="muted">Alertas en curso</p>
+            <p class="stat accent">5</p>
+          </article>
         </div>
-      </form>
-    </section>
+      </aside>
+    </main>
   </div>
 
+  <script src="../assets/js/auth.js"></script>
   <script>
     (function () {
-      const form = document.querySelector('form');
-      form && form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        window.location.href = 'Inventario.html';
-      });
+      window.Auth?.ensureGuest?.({ redirectTo: 'Menu.html' });
+      const form = document.querySelector('#login-form');
+      const statusBox = document.querySelector('#login-status');
+      const usuarioInput = document.querySelector('#usuario');
+      const contrasenaInput = document.querySelector('#contrasena');
+
+      const setStatus = (message = '', type = '') => {
+        if (!statusBox) return;
+        statusBox.textContent = message;
+        statusBox.className = 'form-status' + (type ? ` status-${type}` : '');
+        statusBox.classList.toggle('hidden', !message);
+      };
+
+      const notice = window.Auth?.popNotice?.();
+      if (notice) setStatus(notice, 'info');
+
+      form &&
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          setStatus();
+          const result = window.Auth?.loginUser?.({
+            usuario: usuarioInput?.value,
+            contrasena: contrasenaInput?.value,
+          });
+          if (!result?.ok) {
+            setStatus(result?.message || 'No se pudo iniciar sesion.', 'error');
+            return;
+          }
+          setStatus('Ingreso exitoso. Redirigiendo...', 'success');
+          setTimeout(() => {
+            window.Auth?.goToPanel?.('Menu.html');
+          }, 550);
+        });
+
+      [usuarioInput, contrasenaInput].forEach((input) =>
+        input?.addEventListener('input', () => setStatus())
+      );
     })();
   </script>
 </body>

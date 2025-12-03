@@ -126,6 +126,36 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(114, 224, 209, 0.25);
 }
 
+.form-status {
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+}
+
+.form-status.hidden {
+  display: none;
+}
+
+.form-status.status-error {
+  border-color: rgba(241, 115, 115, 0.55);
+  background: rgba(241, 115, 115, 0.12);
+  color: #f8d4d4;
+}
+
+.form-status.status-success {
+  border-color: rgba(114, 224, 209, 0.55);
+  background: rgba(114, 224, 209, 0.12);
+  color: #d7f5f0;
+}
+
+.form-status.status-info {
+  border-color: rgba(91, 142, 247, 0.6);
+  background: rgba(91, 142, 247, 0.12);
+  color: #d8e4ff;
+}
+
 .form-footer {
   display: flex;
   justify-content: flex-end;
@@ -170,6 +200,12 @@ input:focus {
 .btn-ghost {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
+}
+
+.back-link {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
